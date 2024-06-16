@@ -11,12 +11,12 @@ export class CiCdAwsPipelineDemoStack extends cdk.Stack {
    const pipeline = new CodePipeline(this, 'Pipeline', {
       pipelineName: 'TestPipeline',
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub('zacburns-aws/cicdcdk', 'main'), //Remember to change 
+        input: CodePipelineSource.gitHub('zacburns-aws/cicdcdk', 'main'),
+        installCommands: ['npm i -g npm@latest'],
         commands: ['npm ci', 
                    'npm run build', 
-                   'npx cdk synth'],
-        primaryOutputDirectory: 'ci-cd-aws-pipeline-demo/cdk.out',
-      })
+                   'npx cdk synth']      
+                  })
     });
 
 
