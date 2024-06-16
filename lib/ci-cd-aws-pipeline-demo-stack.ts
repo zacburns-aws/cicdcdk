@@ -14,7 +14,8 @@ export class CiCdAwsPipelineDemoStack extends cdk.Stack {
         input: CodePipelineSource.gitHub('zacburns-aws/cicdcdk', 'main'), //Remember to change 
         commands: ['npm ci', 
                    'npm run build', 
-                   'npx cdk synth']
+                   'npx cdk synth'],
+        primaryOutputDirectory: 'ci-cd-aws-pipeline-demo/cdk.out',
       })
     });
 
